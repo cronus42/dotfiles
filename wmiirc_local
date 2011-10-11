@@ -1,0 +1,27 @@
+#!/bin/sh
+MODKEY=Mod1
+
+wmiir write /tagrules <<!
+/trayer/ -> /./
+!
+
+
+status() {
+        echo -n ' Wlan0:' $(iwconfig wlan0 | sed 's/ /\n/g' | grep Quality) '|' $(acpi -b | sed 's/.*, \{0,2\}\([0-9]\{1,3\}%\),.*/Bat: \1 | /') ' Core MHz:' $(cat /proc/cpuinfo | grep 'cpu MHz' | sed 's/.*: //g; s/\..*//g;') '|' $(uptime |
+        sed 's/.*://; s/,//g') '|' $(date) 
+}
+trayer --edge top --align right --widthtype pixel --width 150 --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x000000 --expand true --heighttype pixel --height 16 &
+exec gnome-volume-control-applet &
+exec gnome-power-manager &
+exec nm-applet &
+root-tail -g 1400x900 --color green --justify --whole /var/log/syslog &
+/usr/share/android-notifier-desktop/run.sh &
+junglediskworkgroup &
+
+xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
+xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
+xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
+
+wmiir xwrite /ctl view "2";terminator &
+sleep 5 && wmiir xwrite /ctl view "3";gnome-terminal -x mcabber &
+sleep 2 && wmiir xwrite /ctl view "1";google-chrome &
