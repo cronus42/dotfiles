@@ -1,0 +1,13 @@
+#!/bin/bash
+var=$(amixer get Master | grep "Front Left:")
+var=$(echo "$var" | sed -ne 's/^[^[]*\[\([^]]*\)\].*/\1/p')
+killall -q osd_cat
+osd_cat --font="-bitstream-*-bold-*-*-*-20-*-*-*-*-*-*-*" \
+   --color=green \
+   --pos=bottom \
+   --align=center \
+   --delay=1 \
+   --shadow=1 \
+   --barmode=percentage \
+   --percentage=$var \
+   --text="VOLUME $var" \

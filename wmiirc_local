@@ -6,11 +6,11 @@ local_events() { true; }
 local_events() {
         cat <<'!'
 Key XF86AudioRaiseVolume
-        amixer -c 0 set Master 2%+ unmute
+        amixer -c 0 set Master 2%+ unmute && ~/.wmii/bin/volume &
 Key XF86AudioLowerVolume
-        amixer -c 0 set Master 2%- unmute
+        amixer -c 0 set Master 2%- unmute && ~/.wmii/bin/volume &
 Key XF86AudioMute
-        amixer -c 0 set Master toggle
+        amixer -c 0 set Master toggle &
 Key XF86Display
         dock_video
 Key XF86Sleep
