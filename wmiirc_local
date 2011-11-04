@@ -28,7 +28,7 @@ Key Mod4-s #gxrandr
 		grandr &
 Key Mod4-c #mcabber
                 gnome-terminal -x mcabber &
-Key Mod4-W #wifi
+Key Mod4-i #wifi
                 wicd-gtk --no-tray &
 !
 }
