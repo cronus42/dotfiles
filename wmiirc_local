@@ -13,6 +13,10 @@ Key XF86AudioMute
         amixer -c 0 set Master toggle
 Key XF86Display
         dock_video
+Key XF86Sleep
+        /usr/sbin/pm-suspend
+Key XF86ScreenSaver
+        gnome-screensaver-command --lock
 
 Key Mod4-l #lock the desktop
 		gnome-screensaver-command --lock
@@ -24,6 +28,8 @@ Key Mod4-s #gxrandr
 		grandr &
 Key Mod4-c #mcabber
                 gnome-terminal -x mcabber &
+Key Mod4-W #wifi
+                wicd-gtk --no-tray &
 !
 }
 
