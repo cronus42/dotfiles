@@ -9,6 +9,8 @@ Key XF86AudioRaiseVolume
         amixer -c 0 set Master 2%+ unmute && ~/.wmii/bin/volume &
 Key XF86AudioLowerVolume
         amixer -c 0 set Master 2%- unmute && ~/.wmii/bin/volume &
+Key XF86AudioPlay
+        echo 'p' > ~/.config/pianobar/ctl &
 Key XF86AudioMute
         amixer -c 0 set Master toggle &
 Key XF86Display

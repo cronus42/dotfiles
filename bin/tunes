@@ -1,0 +1,9 @@
+#!/bin/bash
+killall -q osd_cat
+osd_cat --font="-bitstream-*-bold-*-*-*-20-*-*-*-*-*-*-*" \
+   --color=green \
+   --pos=bottom \
+   --align=center \
+   --delay=3 \
+   --shadow=1 \
+   ~/.config/pianobar/nowplaying   
