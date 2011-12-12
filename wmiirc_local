@@ -29,7 +29,7 @@ Key Mod4-x #shutdown
 Key Mod4-s #gxrandr
 		grandr &
 Key Mod4-c #mcabber
-                gnome-terminal -x mcabber &
+                xterm -e mcabber &
 Key Mod4-i #wifi
                 wicd-gtk --no-tray &
 !
@@ -44,6 +44,4 @@ xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation' 8 1
 xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Button' 8 2
 xinput set-int-prop 'TPPS/2 IBM TrackPoint' 'Evdev Wheel Emulation Axes' 8 6 7 4 5
 
-#wmiir xwrite /ctl view "2";terminator &
-#sleep 5 && wmiir xwrite /ctl view "3";gnome-terminal -x mcabber &
-#sleep 2 && wmiir xwrite /ctl view "1";google-chrome &
+eval `cat ~/.fehbg`

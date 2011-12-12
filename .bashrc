@@ -11,6 +11,7 @@ HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s cmdhist
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 #HISTSIZE=1000
@@ -19,7 +20,6 @@ shopt -s histappend
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
 
 function bash_git_branch
 {
@@ -170,10 +170,14 @@ alias http_trace='pkt_trace port 80'
 alias xclip="xclip -selection c"
 
 #aliases for wimax
-alias wimaxon='wimaxcu ron; wimaxcu connect network 2'
-alias wimaxoff='wimaxcu dconnect; wimaxcu roff'
+alias wimaxon='wimaxcu ron; wimaxcu connect network 2; dhclient wmx0; wimaxcu status link; wimaxcu status connect'
+alias wimaxoff='wimaxcu dconnect; wimaxcu roff; ip route del 75.94.0.0/18'
 alias fixwifi='sudo rmmod -f iwlagn; sleep 5; sudo modprobe iwlagn'
 alias wifi='wicd-gtk --no-tray'
+
+#for git
+alias devpull='ssh -t puppet "cd /etc/puppet-dev; sudo -E git pull"'
+
 
 # Print working directory after a cd.
 cd() {
