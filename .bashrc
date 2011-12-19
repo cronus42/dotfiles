@@ -197,6 +197,10 @@ shopt -s cdspell
 # Added by autojump install.sh
 source /etc/profile.d/autojump.bash
 
+#stderred
+# https://github.com/sickill/stderred
+export LD_PRELOAD="/usr/local/lib/stderred.so"
+
 #Go
 
 export PATH=$PATH:/home/jloope/repos/go/bin
