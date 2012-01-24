@@ -170,13 +170,17 @@ alias http_trace='pkt_trace port 80'
 alias xclip="xclip -selection c"
 
 #aliases for wimax
-alias wimaxon='wimaxcu ron; wimaxcu connect network 2; dhclient wmx0; wimaxcu status link; wimaxcu status connect'
-alias wimaxoff='wimaxcu dconnect; wimaxcu roff; ip route del 75.94.0.0/18'
+alias wimaxon='wimaxcu ron; wimaxcu connect network 2; sudo dhclient wmx0; wimaxcu status link; wimaxcu status connect'
+alias wimaxoff='wimaxcu dconnect; wimaxcu roff; sudo ip route del default; sudo ip route add default via 192.168.1.1 dev wlan0'
 alias fixwifi='sudo rmmod -f iwlagn; sleep 5; sudo modprobe iwlagn'
 alias wifi='wicd-gtk --no-tray'
 
 #for git
 alias devpull='ssh -t puppet "cd /etc/puppet-dev; sudo -E git pull"'
+alias prodpull='ssh -t puppet "cd /etc/puppet; sudo -E git pull"'
+
+#for puppet
+alias pparse='puppet parser validate'
 
 
 # Print working directory after a cd.

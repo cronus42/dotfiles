@@ -97,19 +97,37 @@ dopath("cfg_defaults")
 --    kpress(META.."M", "mod_menu.menu(_, _sub, 'ctxmenu')"),
 --})
 
+function next_wrap()
+        scr = ioncore.goto_next_screen()
+        if obj_is(scr, "WRootWin") then
+                ioncore.goto_nth_screen(0)
+        end
+end
+
+function prev_wrap() 
+        scr = ioncore.goto_prev_screen()
+        if obj_is(scr, "WRootWin") then
+                ioncore.goto_nth_screen(-1)
+        end
+end
+
 -- Caution: these may break the default bindings.
 --UP="Up" ; DOWN="Down" ; LEFT="Left" ; RIGHT="Right"
 UP="K" ; DOWN="J" ; LEFT="H" ; RIGHT="L"
 -- UP="W" ; DOWN="S" ; LEFT="A" ; RIGHT="D"
 
 defbindings("WScreen", {
-    kpress(MOD1..UP, "WScreen.switch_prev(_)"),
-    kpress(MOD1..DOWN, "WScreen.switch_next(_)"),
+    kpress(MOD1..UP, "next_wrap()"),
+    kpress(MOD1..DOWN, "prev_wrap()"),
     bdoc("Raise/Lower Sound."),
     kpress("AnyModifier+XF86AudioRaiseVolume", "ioncore.exec_on(_, 'amixer -c 0 set Master 2%+ unmute && ~/.wmii/bin/volume ')"),
     kpress("AnyModifier+XF86AudioLowerVolume", "ioncore.exec_on(_, 'amixer -c 0 set Master 2%- unmute && ~/.wmii/bin/volume ')"),
     kpress("AnyModifier+XF86AudioMute", "ioncore.exec_on(_, 'amixer -c 0 set Master toggle')"),
     bdoc("TP function Keys."),
+    kpress("AnyModifier+XF86AudioPlay", "ioncore.exec_on(_, 'echo p > ~/.config/pianobar/ctl')"),
+    kpress("AnyModifier+XF86AudioStop", "ioncore.exec_on(_, 'echo q > ~/.config/pianobar/ctl')"),
+    kpress("AnyModifier+XF86AudioPrev", "ioncore.exec_on(_, 'echo n > ~/.config/pianobar/ctl')"),
+    kpress("AnyModifier+XF86AudioNext", "ioncore.exec_on(_, 'echo n > ~/.config/pianobar/ctl')"),
     kpress("AnyModifier+XF86Display", "ioncore.exec_on(_, 'dock_video')"),
     kpress("AnyModifier+XF86ScreenSaver", "ioncore.exec_on(_, 'gnome-screensaver-command --lock')"),
     kpress("AnyModifier+XF86Sleep", "ioncore.exec_on(_, '/usr/sbin/pm-suspend')"),
