@@ -128,7 +128,7 @@ defbindings("WScreen", {
     kpress("AnyModifier+XF86AudioStop", "ioncore.exec_on(_, 'echo q > ~/.config/pianobar/ctl')"),
     kpress("AnyModifier+XF86AudioPrev", "ioncore.exec_on(_, 'echo n > ~/.config/pianobar/ctl')"),
     kpress("AnyModifier+XF86AudioNext", "ioncore.exec_on(_, 'echo n > ~/.config/pianobar/ctl')"),
-    kpress("AnyModifier+XF86Display", "ioncore.exec_on(_, 'dock_video')"),
+    kpress("AnyModifier+XF86Display", "ioncore.exec_on(_, 'dock_video'), ioncore.restart()"),
     kpress("AnyModifier+XF86ScreenSaver", "ioncore.exec_on(_, 'gnome-screensaver-command --lock')"),
     kpress("AnyModifier+XF86Sleep", "ioncore.exec_on(_, '/usr/sbin/pm-suspend')"),
     bdoc("Application Hotkeys"),
