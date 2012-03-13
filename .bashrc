@@ -171,7 +171,7 @@ alias xclip="xclip -selection c"
 
 #aliases for wimax
 alias wimaxon='wimaxcu ron; wimaxcu connect network 2; sudo dhclient wmx0; wimaxcu status link; wimaxcu status connect'
-alias wimaxoff='wimaxcu dconnect; wimaxcu roff; sudo ip route del default; sudo ip route add default via 192.168.1.1 dev wlan0'
+alias wimaxoff='wimaxcu dconnect; wimaxcu roff; sudo ip route del default; sudo ip route add default via 192.168.1.1 dev wlan0; sudo ifconfig wmx0 down'
 alias fixwifi='sudo rmmod -f iwlagn; sleep 5; sudo modprobe iwlagn'
 alias wifi='wicd-gtk --no-tray'
 
