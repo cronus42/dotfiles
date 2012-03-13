@@ -135,6 +135,7 @@ defbindings("WScreen", {
     kpress("Mod4+w", "ioncore.exec_on(_, 'google-chrome')"), 
     kpress("Mod4+c", "ioncore.exec_on(_, 'xterm -e mcabber')"), 
     kpress("Mod4+i", "ioncore.exec_on(_, 'wicd-gtk --no-tray')"), 
+    kpress("Mod4+p", "ioncore.exec_on(_, 'echo 3|pianobar')"), 
     } )
 defbindings("WFrame", {
     kpress(MOD1..LEFT.."+Shift", "WFrame.dec_index(_, _sub)", "_sub:non-nil"),
