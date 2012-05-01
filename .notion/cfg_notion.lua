@@ -147,3 +147,5 @@ defbindings("WTiling", {
     kpress(MOD1..DOWN.."+Control", "WTiling.goto_dir(_, 'below')"),
     kpress(MOD1..LEFT.."+Control", "WTiling.goto_dir(_, 'left')"),
     kpress(MOD1..RIGHT.."+Control", "WTiling.goto_dir(_, 'right')"), })
+
+

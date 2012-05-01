@@ -6,7 +6,7 @@ dopath("cfg_notioncore")
 dopath("cfg_kludges")
 dopath("cfg_layouts")
 
-dopath("mod_xrandr")
+-- dopath("mod_xrandr")
 dopath("mod_xinerama")
 dopath("mod_query")
 dopath("mod_menu")

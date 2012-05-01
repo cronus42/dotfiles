@@ -379,3 +379,6 @@ defctxmenu("WGroupWS", "Workspace", {
 defctxmenu("WClientWin", "Client window", {
     menuentry("Kill",           "WClientWin.kill(_)"),
 })
+
+-- Startup programs
+os.execute("nm-applet &")
