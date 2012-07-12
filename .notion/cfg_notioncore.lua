@@ -381,4 +381,4 @@ defctxmenu("WClientWin", "Client window", {
 })
 
 -- Startup programs
-os.execute("nm-applet &")
+os.execute("killall nm-applet; nm-applet &")
