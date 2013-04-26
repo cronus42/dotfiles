@@ -1,5 +1,5 @@
 #!/bin/bash
-var=$(amixer get Master | grep "Front Left:")
+var=$(amixer get Master | grep "Mono")
 var=$(echo "$var" | sed -ne 's/^[^[]*\[\([^]]*\)\].*/\1/p')
 killall -q osd_cat
 osd_cat --font="-bitstream-*-bold-*-*-*-20-*-*-*-*-*-*-*" \

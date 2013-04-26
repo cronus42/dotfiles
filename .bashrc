@@ -49,7 +49,7 @@ function user_color()
         if [ "$UID" -eq "0" ]; then
                 echo 31
         fi
-        if [ "$UID" -eq "1000" ]; then
+        if [ "$UID" -eq "1001" ]; then
                 echo 33
         fi
 }
