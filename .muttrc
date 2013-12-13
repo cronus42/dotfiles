@@ -1,0 +1,49 @@
+set sendmail=/usr/bin/msmtp
+set mailcap_path="~/.mailcap"
+set mbox_type=Maildir
+set folder="~/Maildir"
+ mailboxes `echo -n "+ "; for file in ~/Maildir/*; do box=$(basename "$file"); echo -n "\"+$box\" "; done`
+set spoolfile="~/Maildir/nike/INBOX"
+set postponed="+Drafts"
+set record="+nike/Sent"
+set hostname="nike.com"
+set realname="James Loope"
+set from="James.Loope@nike.com"
+set envelope_from=yes
+set hidden_host=yes
+set use_domain=yes
+set pager_stop=yes
+my_hdr From: James.Loope @nike.com
+set attribution="%n <%a> wrote on %{%a} [%{%Y-%b-%d %H:%M:%S %Z}]:"
+set strict_threads = no
+set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
+set index_format="%4C %Z[%[%a %m/%d %H:%M]] %-16.16L%?X? [%X]? (%?l?%4l&%4c?) %s"
+set pager_index_lines=20
+# Change default subject format for fwd'd msgs.
+set forward_format="Fwd: %s"
+# Use vi to compose mail.
+set editor = "/usr/bin/vi -c 'set spell' %s"
+# Create a nice status bar.
+set status_format=" %r %b %f   New:%n   Del:%d   TotMsgs:%m Tag:%t Flag:%F Size:%l %>  Lim:%V (%P)"
+# Ignore all lines by default
+ignore *
+# Set what I want to see
+unignore  from  to cc subject date reply-to 
+hdr_order from to cc subject date reply-to 
+# Create a cache for performance.
+# http://www.mutt.org/doc/devel/manual.html#header-cache
+set header_cache="~/.mutt_cache"
+set maildir_header_cache_verify="yes"
+auto_view text/html
+#notmuch macros
+macro index / \
+  "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+  "notmuch: search mail"
+macro index ,r \
+                 "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt -r thread<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter><enter-command>set wait_key<enter>" \
+                 "notmuch: reconstruct thread"
+macro index ,t \
+                 "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -- -inbox<enter>" \
+                 "notmuch: remove message from inbox"
+macro index ,, \
+                "<enter-command>unset wait_key<enter><shell-escape>getmail<enter>"
