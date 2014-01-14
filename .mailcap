@@ -1,3 +1,3 @@
-text/calendar; icalmutt.rb -i 'mailto:james.loope@nike.com' %s;
+text/calendar; gcalcli --calendar='Nike' import -v %s; 
 text/html; links %s; nametemplate=%s.html;
 text/html; links -dump %s; nametemplate=%s.html; copiousoutput;

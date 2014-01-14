@@ -35,6 +35,8 @@ hdr_order from to cc subject date reply-to
 set header_cache="~/.mutt_cache"
 set maildir_header_cache_verify="yes"
 auto_view text/html
+# query ldap
+set query_command = "mutt_ldap.py '%s'"
 #notmuch macros
 macro index / \
   "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt -r --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \

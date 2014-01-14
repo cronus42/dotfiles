@@ -211,4 +211,7 @@ export PATH=$PATH:/home/jloope/repos/go/bin
 
 source ~/.awscreds
 
+#vagrant-lxc
+export VAGRANT_DEFAULT_PROVIDER=lxc
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
