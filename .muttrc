@@ -18,7 +18,7 @@ set attribution="%n <%a> wrote on %{%a} [%{%Y-%b-%d %H:%M:%S %Z}]:"
 set strict_threads = no
 set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
 set index_format="%4C %Z[%[%a %m/%d %H:%M]] %-16.16L%?X? [%X]? (%?l?%4l&%4c?) %s"
-set pager_index_lines=20
+set pager_index_lines=10
 # Change default subject format for fwd'd msgs.
 set forward_format="Fwd: %s"
 # Use vi to compose mail.
@@ -28,8 +28,8 @@ set status_format=" %r %b %f   New:%n   Del:%d   TotMsgs:%m Tag:%t Flag:%F Size:
 # Ignore all lines by default
 ignore *
 # Set what I want to see
-unignore  from  to cc subject date reply-to 
-hdr_order from to cc subject date reply-to 
+unignore  from subject date
+hdr_order from cc subject date
 # Create a cache for performance.
 # http://www.mutt.org/doc/devel/manual.html#header-cache
 set header_cache="~/.mutt_cache"
@@ -48,4 +48,4 @@ macro index ,t \
                  "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -- -inbox<enter>" \
                  "notmuch: remove message from inbox"
 macro index ,, \
-                "<enter-command>unset wait_key<enter><shell-escape>getmail<enter>"
+                "<enter-command>unset wait_key<enter><shell-escape>offlineimap;fdm fetch<enter>"

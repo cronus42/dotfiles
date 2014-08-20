@@ -300,7 +300,7 @@ end
 
 --if no procfs battery state is found, try sysfs
 local function get_battery()
-    if try_open(statusd_laptopstatus.bat_state) ~= nil then
+    if try_open(statusd_laptopstatus.ac_state) ~= nil then
         return get_battery_procfs()
     else 
         return get_battery_sysfs()

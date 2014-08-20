@@ -207,7 +207,7 @@ export LD_PRELOAD="/usr/local/lib/stderred.so"
 
 #Go
 
-export PATH=$PATH:/home/jloope/repos/go/bin
+export PATH=$PATH:/home/jloope/go/bin
 
 source ~/.awscreds
 
@@ -215,3 +215,5 @@ source ~/.awscreds
 export VAGRANT_DEFAULT_PROVIDER=lxc
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+GOPATH=~/go
