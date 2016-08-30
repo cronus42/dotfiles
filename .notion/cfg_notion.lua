@@ -133,8 +133,7 @@ defbindings("WScreen", {
     kpress("AnyModifier+XF86Sleep", "ioncore.exec_on(_, '/usr/sbin/pm-suspend')"),
     bdoc("Application Hotkeys"),
     kpress("Mod4+w", "ioncore.exec_on(_, 'google-chrome')"), 
-    kpress("Mod4+c", "ioncore.exec_on(_, 'xterm -e irssi')"), 
-    kpress("Mod4+i", "ioncore.exec_on(_, 'wicd-gtk --no-tray')"), 
+    kpress("Mod4+i", "ioncore.exec_on(_, 'xterm -e irssi')"), 
     kpress("Mod4+p", "ioncore.exec_on(_, 'echo 16|pianobar')"), 
     } )
 defbindings("WFrame", {
