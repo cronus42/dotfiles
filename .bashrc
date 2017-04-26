@@ -129,9 +129,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+#alias ls='ls -ltrah'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -209,8 +211,6 @@ export LD_PRELOAD="/usr/local/lib/stderred.so"
 
 export PATH=$PATH:/usr/local/go/bin
 
-source ~/.awscreds
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-GOPATH=~/go
+GOPATH=~/.go
