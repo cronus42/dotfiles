@@ -29,10 +29,6 @@ function ruby_version
 {
   ruby -v 2> /dev/null | awk '{ print $2}'
 }
-function rvm_gemset
-{
-  rvm gemset name 2> /dev/null|awk '{if ($0=="") print ""; else print "@" $0 }' 2> /dev/null 
-}
 
 function lsofg()
 {
@@ -129,7 +125,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-#alias ls='ls -ltrah'
+alias ls='ls -ltrah --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -162,7 +158,6 @@ export HISTSIZE=1000000
 
 export RUBYOPT=rubygems
 export EDITOR=/usr/bin/vim
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 alias gam='python ~/repos/gam/gam.py'
 alias v='vim'
@@ -205,12 +200,20 @@ source /etc/profile.d/autojump.bash
 
 #stderred
 # https://github.com/sickill/stderred
-export LD_PRELOAD="/usr/local/lib/stderred.so"
+#export LD_PRELOAD="/usr/local/lib/stderred.so"
 
 #Go
 
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/.go/bin
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export GOPATH=~/.go
 
-GOPATH=~/.go
+#DBUS
+
+if [[ -z $DBUS_SESSION_BUS_ADDRESS ]]; then
+    if [[ -f ~/.dbus/session-bus/$(dbus-uuidgen --get)-0 ]]; then
+        source ~/.dbus/session-bus/$(dbus-uuidgen --get)-0
+        export DBUS_SESSION_BUS_ADDRESS
+    fi
+fi
+
