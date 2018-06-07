@@ -1,0 +1,32 @@
+[user]
+	email = cronus@stolenshoe.com
+	name = James Loope
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  get = pull --rebase
+  pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+	appraise = !/home/jloope/work/bin/git-appraise
+[web]
+  browser = firefox
+[merge]
+  tool = meld
+  conflictstyle = diff3
+[mergetool "splice"]
+  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+  trustExitCode = true
+[mergetool "meld"]
+  cmd = "meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $BASE $REMOTE $MERGED"
+[push]
+  default = simple
+[init]
+	templatedir = ~/.git_template
