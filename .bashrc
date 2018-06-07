@@ -196,7 +196,7 @@ shopt -s cdspell
 #autocomplete ssh
 #complete -W "$(echo `cat ~/.bash_history | egrep '^ssh ' | sort | uniq | sed 's/^ssh //'`;)" ssh
 # Added by autojump install.sh
-source /etc/profile.d/autojump.bash
+source /etc/profile.d/autojump.sh
 
 #stderred
 # https://github.com/sickill/stderred
