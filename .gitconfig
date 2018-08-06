@@ -28,5 +28,6 @@
   cmd = "meld --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $BASE $REMOTE $MERGED"
 [push]
   default = simple
-[init]
-	templatedir = ~/.git_template
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true

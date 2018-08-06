@@ -73,8 +73,8 @@ if not statusd_laptopstatus then
     --sysfs
     temp_info_sysfs = {"/sys/class/thermal/thermal_zone0/temp"},
     ac_state_sysfs = {"/sys/class/power_supply/AC/online"},
-    bat_now_sysfs = {"/sys/class/power_supply/BAT0/energy_now"},
-    bat_full_sysfs = {"/sys/class/power_supply/BAT0/energy_full"}
+    bat_now_sysfs = {"/sys/class/power_supply/BAT0/charge_now"},
+    bat_full_sysfs = {"/sys/class/power_supply/BAT0/charge_full"}
   }
 end
 

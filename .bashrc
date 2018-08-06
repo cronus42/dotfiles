@@ -16,6 +16,14 @@ shopt -s cmdhist
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 #HISTSIZE=1000
 #HISTFILESIZE=2000
+set -o vi
+export HISTTIMEFORMAT="[%F] [%T] "
+export HISTFILESIZE=1000000000 
+export HISTSIZE=1000000
+
+export RUBYOPT=rubygems
+export EDITOR=/usr/bin/vim
+
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -124,17 +132,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ls='ls -ltrah --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -151,35 +148,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-set -o vi
-export HISTTIMEFORMAT="[%F] [%T] "
-export HISTFILESIZE=1000000000 
-export HISTSIZE=1000000
-
-export RUBYOPT=rubygems
-export EDITOR=/usr/bin/vim
-
-alias gam='python ~/repos/gam/gam.py'
-alias v='vim'
-alias pkt_trace='sudo tcpflow -i wlan0 -c'
-alias ip_trace='pkt_trace ip'
-alias http_trace='pkt_trace port 80'
-alias xclip="xclip -selection c"
-
-#aliases for wimax
-alias wimaxon='wimaxcu ron; wimaxcu connect network 2; sudo dhclient wmx0; wimaxcu status link; wimaxcu status connect'
-alias wimaxoff='wimaxcu dconnect; wimaxcu roff; sudo ip route del default; sudo ip route add default via 192.168.1.1 dev wlan0; sudo ifconfig wmx0 down'
-alias fixwifi='sudo rmmod -f iwlwifi; sleep 5; sudo modprobe iwlwifi 11n_disable=1 swcrypto=1'
-alias wifi='wicd-gtk --no-tray'
-
-#for git
-alias devpull='ssh -t puppet "cd /etc/puppet-dev; sudo -E git pull"'
-alias prodpull='ssh -t puppet "cd /etc/puppet; sudo -E git pull"'
-
-#for puppet
-alias pparse='puppet parser validate'
-
-
 # Print working directory after a cd.
 cd() {
     if [[ $@ == '-' ]]; then
@@ -193,14 +161,15 @@ cd() {
 
 #autocorrect cd
 shopt -s cdspell
+
 #autocomplete ssh
-#complete -W "$(echo `cat ~/.bash_history | egrep '^ssh ' | sort | uniq | sed 's/^ssh //'`;)" ssh
+complete -W "$(echo `cat ~/.bash_history | egrep '^ssh ' | sort | uniq | sed 's/^ssh //'`;)" ssh
 # Added by autojump install.sh
 source /etc/profile.d/autojump.sh
 
 #stderred
 # https://github.com/sickill/stderred
-#export LD_PRELOAD="/usr/local/lib/stderred.so"
+export LD_PRELOAD="/usr/local/lib/stderred.so"
 
 #Go
 
